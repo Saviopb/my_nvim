@@ -39,15 +39,33 @@ Plug 'cohama/lexima.vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'mhartington/oceanic-next'
+Plug 'valloric/youcompleteme'
+Plug 'christoomey/vim-system-copy'
 call plug#end()
 
 
+function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+ exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+ exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+endfunction
+call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
+call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
+call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
+call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
+call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
+call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
+call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
 
 
-
-
-
-
+" NERDTress Ctrl+n
+map <C-n> :NERDTreeToggle<CR>
+" NERDTress File highlighting
 "
 "
 " GENERAL COMMANDS
@@ -111,6 +129,12 @@ set relativenumber
 
 " Identing
 set autoindent
+set tabstop=4
+filetype plugin indent on
+set tabstop=2
+set shiftwidth=2
+set expandtab
+
 
 " Search
 
@@ -181,7 +205,7 @@ set hidden
 
 set termguicolors
 
-set mouse=a
+"set mouse=a
 
 set inccommand=split
 set clipboard=unnamed
@@ -200,4 +224,15 @@ let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsSnippetsDir = '~/.config/nvim/UltiSnips'
 
 
-nnoremap <leader>dl :vsplit ~/Downloads/im/DEV<cr> 
+nnoremap <leader>b A__<esc>
+nnoremap <leader>s :w <esc>
+nnoremap <leader>v iλ <esc>
+
+
+"others
+"
+"
+"
+" Cosmetics
+highlight LineNr ctermfg=grey
+
