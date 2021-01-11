@@ -41,10 +41,11 @@ Plug 'honza/vim-snippets'
 Plug 'mhartington/oceanic-next'
 Plug 'valloric/youcompleteme'
 Plug 'christoomey/vim-system-copy'
+Plug 'pangloss/vim-javascript'
 call plug#end()
 
-
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+
  exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
  exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
 endfunction
@@ -63,11 +64,6 @@ call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
 call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
 
 
-" NERDTress Ctrl+n
-map <C-n> :NERDTreeToggle<CR>
-" NERDTress File highlighting
-"
-"
 " GENERAL COMMANDS
 "
 " @see http://stackoverflow.com/questions/2001190/adding-a-command-to-vim	
@@ -87,11 +83,14 @@ command TwoSpaces2FourSpaces execute ':%s/^\s*/&&/g'
 
 
 
+imap <C-J> <esc>a<Plug>snipMateNextOrTrigger
+smap <C-J> <Plug>snipMateNextOrTrigger
 
 
 
-
-
+" NERDTress Ctrl+n
+map <C-x> :NERDTreeToggle<CR>
+" NERDTress File highlighting
 
 
 "
